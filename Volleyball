@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VolleyBall Club</title>
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <h1>VolleyBall Club</h1>
+		
+		<br/>
+
+		Formulaire Joueur :
+		
+		<form action="ajoutjoueur.php" method="post">
+		
+		Nom : <input type="text" name="nom" /> <br>
+		Prénom : <input type="text" name="prenom" /> <br>
+		Photo : <input type="text" name="photo" /> <br>
+		Numéro de Licence : <input type="text" name="numlicence" /> <br>
+		Date de naissance : <input type="text" name="date_naissance" /> <br>
+		Taille : <input type="text" name="taille" /> <br>
+		Poids : <input type="text" name="poids" /> <br>
+		Poste préféré : <input type="text" name="poste_pref" /> <br>
+		
+		<input type="reset" value="Annuler"  />
+		<input type="submit" value="Valider"  />
+		
+		</form>
+		
+		
+		
+		
+	</body>
+	
+</html>
