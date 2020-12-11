@@ -16,12 +16,12 @@
 		
 		if (isset($_GET['rechjoueur']) AND !empty($_GET['rechjoueur'])) {
 			$rech = htmlspecialchars($_GET['rechjoueur']);
-			$reqrech = $bdd->query('SELECT * FROM joueur WHERE prenom LIKE "%'.$rech.'%" OR nom LIKE "%'.$rech.'%" ORDER BY nom');
+			$reqrechjoueur = $bdd->query('SELECT * FROM joueur WHERE prenom LIKE "%'.$rech.'%" OR nom LIKE "%'.$rech.'%" ORDER BY nom');
 		}
 
 		if (isset($_GET['rechmatch']) AND !empty($_GET['rechmatch'])) {
 			$rech = htmlspecialchars($_GET['rechmatch']);
-			$reqrech = $bdd->query('SELECT * FROM match WHERE nom_adverse LIKE "%'.$rech.'%" ORDER BY nom_adverse');
+			$reqrechmatch = $bdd->query('SELECT * FROM match WHERE nom_adverse LIKE "%'.$rech.'%" ORDER BY nom_adverse');
 		}
 			
 		
@@ -42,7 +42,7 @@
 		
 		<?php
 		
-		if (isset($reqrech)) {
+		if (isset($reqrechjoueur)) {
 		?>
 				<table>
 				 <caption><b> Joueurs :</b></caption>
@@ -60,7 +60,7 @@
 					
 					<?php
 			
-			while ($donnees = $reqrech->fetch()) {
+			while ($donnees = $reqrechjoueur->fetch()) {
 				
 			?>	
 				<tr>
@@ -100,7 +100,7 @@
 				
 		<?php
 				
-		if (isset($reqrech)) {
+		if (isset($reqrechmatch)) {
 		?>
 			<table>
 			<caption><b> Matchs :</b></caption>
@@ -116,18 +116,15 @@
 				
 			<?php
 		
-			while ($donnees = $reqrech->fetch()) {
+			while ($donnees = $reqrechmatch->fetch()) {
 			?>	
 
 				<tr>
-				<td><? echo $donnees['nom']; ?> </td>
-				<td><? echo $donnees['prenom']; ?> </td>
-				<td><? echo $donnees['photo']; ?> </td>
-				<td><? echo $donnees['num_licence']; ?> </td>
-				<td><? echo $donnees['date_naissance']; ?> </td>
-				<td><? echo $donnees['taille']; ?> </td>
-				<td><? echo $donnees['poids']; ?> </td>
-				<td><? echo $donnees['poste_pref']; ?> </td>
+				<td><? echo $donnees['date']; ?> </td>
+				<td><? echo $donnees['heure']; ?> </td>
+				<td><? echo $donnees['nom_adverse']; ?> </td>
+				<td><? echo $donnees['lieu_rencontre']; ?> </td>
+				<td><? echo $donnees['domi_ou_ext']; ?> </td>
 				</tr>
 
 			</table>
