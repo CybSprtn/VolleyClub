@@ -43,47 +43,41 @@
 		<?php
 		
 		if (isset($reqrechjoueur)) {
-		?>
-				<table>
-				 <caption><b> Joueurs :</b></caption>
-				  <tr>
-
-					<td>Nom</td>
-					<td>Prénom</td>
-					<td>Photo</td>
-					<td>Numéro de licence</td>
-					<td>Date de naissance</td>
-					<td>Taille</td>
-					<td>Poids</td>
-					<td>Poste préféré</td>
-				  </tr>
-					
-					<?php
-			
-			while ($donnees = $reqrechjoueur->fetch()) {
-				
-			?>	
-				<tr>
-				<td><? echo $donnees['nom']; ?> </td>
-				<td><? echo $donnees['prenom']; ?> </td>
-				<td><? echo $donnees['photo']; ?> </td>
-				<td><? echo $donnees['num_licence']; ?> </td>
-				<td><? echo $donnees['date_naissance']; ?> </td>
-				<td><? echo $donnees['taille']; ?> </td>
-				<td><? echo $donnees['poids']; ?> </td>
-				<td><? echo $donnees['poste_pref']; ?> </td>
-				</tr>
-
-				</table>
-			
-			<?php
-			
-			}
-			$reqrech->closeCursor();  
-		}
-		
 			?>
+				<table class="table_joueur">
+				 <caption><b>Joueurs de votre recherche</b></caption>
+				 <thead>
+				  <tr>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Photo</th>
+					<th>Numéro de Licence</th>
+					<th>Date de naissance</th>
+					<th>Taille</th>
+					<th>Poids</th>
+					<th>Poste préféré</th>
+				  </tr>
+					</thead>
+					<tbody>
 
+			<?php	foreach ($reqrechjoueur as $donnees):  ?>
+
+					<tr>
+					<td><?= $donnees['nom']; ?> </td>
+					<td><?= $donnees['prenom']; ?> </td>
+					<td><?= $donnees['photo']; ?> </td>
+					<td><?= $donnees['num_licence']; ?> </td>
+					<td><?= $donnees['date_naissance']; ?> </td>
+					<td><?= $donnees['taille']; ?> </td>
+					<td><?= $donnees['poids']; ?> </td>
+					<td><?= $donnees['poste_pref']; ?> </td>
+				</tr>
+			
+			<?php endforeach ?>
+					</tbody>
+				</table>
+		
+	<?php	}  ?>
 
 		<!-- Recherche de Match -->
 
@@ -101,45 +95,36 @@
 		<?php
 				
 		if (isset($reqrechmatch)) {
-		?>
-			<table>
-			<caption><b> Matchs :</b></caption>
-			<tr>
-
-				<td>Date</td>
-				<td>Heure</td>
-				<td>Nom de l'équipe adverse</td>
-				<td>Lieu de rencontre</td>
-				<td>Domicile ou extérieur</td>
-
-			</tr>
-				
-			<?php
-		
-			while ($donnees = $reqrechmatch->fetch()) {
-			?>	
-
-				<tr>
-				<td><? echo $donnees['date']; ?> </td>
-				<td><? echo $donnees['heure']; ?> </td>
-				<td><? echo $donnees['nom_adverse']; ?> </td>
-				<td><? echo $donnees['lieu_rencontre']; ?> </td>
-				<td><? echo $donnees['domi_ou_ext']; ?> </td>
-				</tr>
-
-			</table>
-		
-			<?php
-		
-			}
-
-			$reqrech->closeCursor();  
-		}
-	
 			?>
-		
-		
+				<table class="table_match">
+					<caption><b>Matchs de votre recherche</b></caption>
+					<thead>
+					<tr>
+					<th>Date</th>
+					<th>Heure</th>
+					<th>Nom de l'équipe adverse</th>
+					<th>Lieu de rencontre</th>
+					<th>Domicile ou extérieur</th>
+					</tr>
+					</thead>
+					<tbody>
+
+			<?php	foreach ($reqrechmatch as $donnees):  ?>
+
+					<tr>
+					<td><?= $donnees['date']; ?> </td>
+					<td><?= $donnees['heure']; ?> </td>
+					<td><?= $donnees['nom_adverse']; ?> </td>
+					<td><?= $donnees['lieu_rencontre']; ?> </td>
+					<td><?= $donnees['domi_ou_ext']; ?> </td>
+				</tr>
 			
+			<?php endforeach ?>
+					</tbody>
+				</table>
+		
+	<?php	}  ?>
+		
     </body>
 	
 </html>
