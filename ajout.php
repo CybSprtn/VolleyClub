@@ -15,12 +15,12 @@
 		$rech =NULL;
 		
 		if (isset($_GET['rechjoueur']) AND !empty($_GET['rechjoueur'])) {
-			$rech = htmlspecialchars($_GET['rechjoueur']);
+			$rech = ($_GET['rechjoueur']);
 			$reqrechjoueur = $bdd->query('SELECT * FROM joueur WHERE prenom LIKE "%'.$rech.'%" OR nom LIKE "%'.$rech.'%" ORDER BY nom');
 		}
 
 		if (isset($_GET['rechmatch']) AND !empty($_GET['rechmatch'])) {
-			$rech = htmlspecialchars($_GET['rechmatch']);
+			$rech = ($_GET['rechmatch']);
 			$reqrechmatch = $bdd->query('SELECT * FROM match WHERE nom_adverse LIKE "%'.$rech.'%" ORDER BY nom_adverse');
 		}
 			
