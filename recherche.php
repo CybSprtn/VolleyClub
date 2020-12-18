@@ -21,7 +21,7 @@
 
 		if (isset($_GET['rechmatch']) AND !empty($_GET['rechmatch'])) {
 			$rech = ($_GET['rechmatch']);
-			$reqrechmatch = $bdd->query('SELECT * FROM match WHERE nom_adverse LIKE "%'.$rech.'%" ORDER BY nom_adverse');
+			$reqrechmatch = $bdd->query('SELECT * FROM matchs WHERE adversaire LIKE "%'.$rech.'%" ORDER BY nom_adverse');
 		}
 			
 		

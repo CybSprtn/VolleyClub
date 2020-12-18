@@ -23,7 +23,7 @@
         $poste_pref=$_POST['poste_pref'];
 		
 		// Ouverture d'une connexion à la bdd contact
-		$bdd = new PDO('mysql:host=localhost;dbname=voleyball;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=volleyball;charset=utf8', 'root', '');
 		
 		/*Vérifiez si les attributs sont déjà dans la base de données*/
 		$existe = "SELECT * FROM joueur WHERE nom='$nom' AND prenom='$prenom' AND photo='$photo' AND num_licence='$num_licence' AND date_naissance='$date_naissance' AND taille='$taille' AND poids='$poids' AND poste_pref='$poste_pref'";

@@ -21,10 +21,10 @@
 
 		
 		// Ouverture d'une connexion à la bdd contact
-		$bdd = new PDO('mysql:host=localhost;dbname=voleyball;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=volleyball;charset=utf8', 'root', '');
 		
 		/*Vérifiez si les attributs sont déjà dans la base de données*/
-		$existe = "SELECT * FROM joueur WHERE nom='$nom' AND PRENOM='$prenom' AND photo='$photo' AND num_licence='$num_licence' AND date_naissance='$date_naissance' AND taille='$taille' AND poids='$poids' AND poste_pref='$poste_pref'";
+		$existe = "SELECT * FROM matchs WHERE date='$date' AND heure='$heure' AND adversaire='$nom_adverse' AND lieu='$lieu_rencontre' AND domicile='$domi_ou_ext'";
 		
 		$count = $bdd->prepare($existe);
 		$count->execute();
@@ -33,17 +33,17 @@
 		
 		if ($number!=0) {
 			
-			echo "Le joueur existe déjà.";
+			echo "Le match existe déjà.";
 			
 		} else {
 		
-			$requete = "INSERT INTO joueur(nom, prenom, photo, num_licence, date_naissance, taille, poids, poste_pref) VALUES ('$nom', '$prenom','$photo','$num_licence','$date_naissance','$taille', '$poids', '$poste_pref')";
+			$requete = "INSERT INTO matchs(date, heure, adversaire, lieu, domicile) VALUES ('$date', '$heure','$nom_adverse','$lieu_rencontre','$domi_ou_ext)";
 				
 			$bdd->exec($requete);
 			
-			echo "Joueur ajouté ! <br/> <br/> Voici les joueurs existants : <br/> <br/>";
+			echo "Match ajouté ! <br/> <br/> Voici les joueurs existants : <br/> <br/>";
 				
-			$reponse = $bdd->query('SELECT * FROM joueur');
+			$reponse = $bdd->query('SELECT * FROM matchs');
 	
 			// On affiche chaque entrée une à une
 			while ($donnees = $reponse->fetch()) {
