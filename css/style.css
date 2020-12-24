@@ -1,0 +1,62 @@
+
+body{
+    background-color: rgb(136, 136, 136);
+}
+/* ------------------------------------------------HEADER HORIZONTAL------------------------------------------------------ */
+.header-top{
+    display: flex;
+    width: 100%;
+    margin:0;
+    padding:0;
+    background-color: rgba(0, 0, 0, 0.555);
+    height: 100px;
+    position:fixed;
+    top:0;
+    left:0;
+}
+.header-top img{
+    position: fixed;;
+    height: 170px;
+    margin-left:45%;
+   
+}
+/* ------------------------------------------------HEADER VERTICAL------------------------------------------------------ */
+.header-sidebar{
+    display: flex;
+    width: 5%;
+    background-color: rgba(0, 0, 0, 0.555);
+    height: 100%;
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+/* ------------------------------------------------CONTENU PAGES------------------------------------------------------ */
+
+.container{
+    padding-top: 300px;
+    width: 80%;
+    border: 1px solid blue;
+    margin-left: 10%;
+}
+
+/* ------------------------------------------------CONTENU PAGE LOGIN------------------------------------------------------ */
+
+.bloc-top img{
+    position:relative;
+    /* background-image: url(background-auth.jpg); */
+    height: 1000px;
+    width: 90%;
+    margin-left: 7.5%;
+    -webkit-background-size:cover;
+    background-size: cover;
+}
+.form-auth{
+    text-align: center;
+    padding-top: 300px;
+    height: 700px;
+    width: 60%;
+    border: 1px solid blue;
+    margin:0 auto;
+    
+}
