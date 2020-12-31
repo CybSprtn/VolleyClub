@@ -1,0 +1,31 @@
+<?php
+					// Ouverture d'une connexion à la bdd contact
+					// $bdd = new PDO('mysql:host=localhost;dbname=volleyclub;charset=utf8', 'root', '');
+
+			
+					
+				
+					
+						$requete = "SELECT * FROM matchs WHERE est_fini=true";
+
+						$listematchs=$bdd->exec($requete);
+						
+							
+						$reponse = $bdd->query('SELECT * FROM joueur');
+				
+						// On affiche chaque entrée une à une
+						while ($donnees = $reponse->fetch()) { ?>
+
+							<div class="match">
+								<?php echo $donnees['adversaire'] . $donnees['lieu'] . $donnees['score_domi'] . $donnees['score_ext'] . $donnees['contexte']?>
+							</div>
+						
+						<?php } ?>
+						
+						$reponse->closeCursor(); // Termine le traitement de la requête
+						
+					<?php} ?>
+					
+					<?php $count->closeCursor(); ?>// Termine le traitement de la requête
+					
+					<?php $bdd = null; ?>
