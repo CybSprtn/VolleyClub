@@ -4,7 +4,7 @@ body{
 }
 /* ------------------------------------------------HEADER HORIZONTAL------------------------------------------------------ */
 .header-top{
-    display: flex;
+    
     width: 100%;
     margin:0;
     padding:0;
@@ -22,22 +22,63 @@ body{
 }
 /* ------------------------------------------------HEADER VERTICAL------------------------------------------------------ */
 .header-sidebar{
-    display: flex;
-    width: 5%;
+    /* display: flex; */
+    width: 100px;
     background-color: rgba(0, 0, 0, 0.555);
     height: 100%;
     position:fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0; 
+}
+
+.header-sidebar nav ul {
+        
+    
+    margin:0; 
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    position:absolute;
+    top:30%;
+    height: 400px;
+    width: 100%;
+    margin-left: 20%;
+
+   
+} 
+
+.header-sidebar nav ul li{
+    display: block;
+    margin-bottom: 100px;
+     
+}
+
+.header-sidebar nav ul li a{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+}
+
+.header-sidebar nav ul li a:hover {
+    color:rgb(255, 136, 0);
+    transition: .6s;
+}
+.header-sidebar nav .current{
+    color: rgb(255, 136, 0);
 }
 
 /* ------------------------------------------------CONTENU PAGES------------------------------------------------------ */
 
 .container{
-    padding-top: 300px;
+    margin:0 ;
+    padding-top: 200px;
     width: 80%;
-    border: 1px solid blue;
+    /* border: 1px solid rgb(0, 0, 0); */
     margin-left: 10%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ------------------------------------------------CONTENU PAGE LOGIN------------------------------------------------------ */
@@ -48,8 +89,7 @@ body{
     height: 1000px;
     width: 90%;
     margin-left: 7.5%;
-    -webkit-background-size:cover;
-    background-size: cover;
+  
 }
 .form-auth{
     text-align: center;
@@ -59,4 +99,124 @@ body{
     border: 1px solid blue;
     margin:0 auto;
     
+}
+
+
+/* ------------------------------------------------PAGE AJOUTJOUEUR------------------------------------------------------ */
+
+.form-add-joueur{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 50%;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+.form-add-joueur input{
+    float: right;
+   
+}
+/* -----------Bar horizontal---------------- */
+.header-top nav{
+    margin-top:50px;
+    margin-left: 5%;
+}
+
+.header-top nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+.header-top nav ul li{
+    display: inline-flex;
+    margin-left: 16%;
+}
+
+.header-top nav ul li a{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding :16px 0 5px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.header-top nav ul li a:hover {
+    color:rgb(255, 136, 0);
+    transition: .6s;
+}
+.header-top nav .current{
+    color: rgb(255, 136, 0);
+}
+
+/* ------------------------------------------------PAGE MATCH------------------------------------------------------ */
+
+.match table{
+    width: 100%;
+}
+.match {
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.match th {
+   background-color: rgba(0, 0, 0, 0.753);
+   color: rgb(247, 130, 47); 
+}
+.caption{
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 26px;
+    margin-bottom: 50px;
+  
+}
+.match td {
+    color: rgb(247, 147, 76);
+    background-color: rgba(192, 47, 47, 0.753); 
+ }
+
+ .win{
+    background-color: rgba(112, 194, 58, 0.753); 
+
+ }
+ .loose{
+    background-color: rgba(192, 47, 47, 0.753); 
+
+ }
+
+.match th, td{
+    padding:5px;
+    text-align: left;
+}
+.match table, th, td{    
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.suppr{
+    background-color: rgb(255, 28, 28);
+}
+
+/* ------------------------------------------------PAGE DETAIL MATCH------------------------------------------------------ */
+
+.selecteur h1{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(119, 68, 2);
+}
+
+
+/* ------------------------------------------------LES FORMULAIRES------------------------------------------------------ */
+
+.form-add-match{
+    margin: auto;   
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 500px;
+    line-height: 55px;
+
+}
+.form-add-match input{
+  
+   float: right;
+    
+}
+.btn{
+    font-size: 20px;   
 }
