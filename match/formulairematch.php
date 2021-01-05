@@ -1,4 +1,4 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Formulaire match</title>
@@ -14,22 +14,18 @@
 				<?php
 
 				
-				if (isset($_POST['adversaire'])) {
+				if (isset($_POST['date']) && isset($_POST['heure']) && isset($_POST['adversaire']) && isset($_POST['lieu_rencontre']) && isset($_POST['contexte'])) {
 
-					if (isset($_POST['datem']) && !empty($_POST['heure']) && ($_POST['adversaire']) && ($_POST['lieu'])) {
-
-						$datem=$_POST['datem'];
-						$heure=$_POST['heure'];
-						$adversaire=$_POST['adversaire'];
-						$lieu=$_POST['lieu'];
-						$est_fini= 0;
-						$score_domi = 0;
-						$score_ext = 0;
-						$domicile = 0;
-						$contexte=$_POST['contexte'];
-						$idset=1;
-						
-					}
+					$datem=$_POST['datem'];
+					$heure=$_POST['heure'];
+					$adversaire=$_POST['adversaire'];
+					$lieu=$_POST['lieu'];
+					$est_fini= 0;
+					$score_domi = 0;
+					$score_ext = 0;
+					$domicile = 0;
+					$contexte=$_POST['contexte'];
+					$idset=1;
 
 					// 	Ouverture d'une connexion à la bdd contact
 					try{
@@ -82,7 +78,7 @@
 							Heure   <input type="time" name="heure" /> <br> <br>
 							Adversaire <input type="text" name="adversaire" /> <br> <br>
 							Lieu de rencontre  <input type="text" name="lieu" /> <br> <br>
-							<h4>Contexte</h4>
+							Contexte
 							<select name="contexte">
 
 								<option value="championnat">Championnat</option>
@@ -90,9 +86,9 @@
 								<option value="coupe-nationale">Coupe Nationale</option>
 								<option value="coupe-regionale">Coupe Régionale</option>
 								
-							</select> 						
-							<input class="btn" type="reset" value="Annuler"  />
-							<input class="btn" type="submit" value="Valider"  />
+							</select> 		<br> <br>				
+							<input class="valider" type="submit" value="Valider"  />
+							<input class="annuler" type="reset" value="Annuler"  />
 							
 						</form>	
 
@@ -104,28 +100,3 @@
 	</body>
 	
 </html>
-
-<div class="produits">
-					<?php 
-					if(!empty($resultatRecherche)){
-						foreach($resultatRecherche as $prod): ?>
-					<div class="produit">
-						<a class="lien_produit" href="produit.php?ID_Produit=<?=$prod['ID_Produit']?>">
-							<img src="<?=$prod['photo']?>" width="200" height="200" alt="<?=$prod['denomination']?>">
-						</a>
-						<div class="specs_produits">
-							<a class="lien_produit" href="produit.php?ID_Produit=<?=$prod['ID_Produit']?>">
-           	    				<div class="name"><?=$prod['denomination']?></div>
-           	    			</a>
-							<div class="price"><?=$prod['prix_unitaire']?>€
-								<div class="price_per_kilo"> (soit <?=$prod['prix_unitaire']?>€/kg)</div>
-								<!--penser à rajouter un attribut "prix au kilo" dans la bdd-->
-							</div>
-							<div class="desc"><?=$prod['description']?></div>
-						</div>
-					</div>
-				<?php
-						?>
-				</tr>
-				<?php endforeach; 
-				} ?>

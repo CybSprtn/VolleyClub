@@ -1,4 +1,4 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Match</title>
@@ -22,7 +22,7 @@
                         $adversaire=$_POST['adversaire'];
                         $lieu=$_POST['lieu'];
                         $contexte=$_POST['contexte'];
-                        
+                        $id=$_POST['modif'];
 
                     // 	Ouverture d'une connexion à la bdd contact
                     try{
@@ -32,22 +32,26 @@
                     }
                         
 
-                    $requete = "UPDATE matchs SET date = '$datem', heure = '$heure', adversaire = '$adversaire', lieu = '$lieu', contexte = '$contexte'";
+                    $requete = "UPDATE matchs SET date = '$datem', heure = '$heure', adversaire = '$adversaire', lieu = '$lieu', contexte = '$contexte' WHERE id_match = '$id'";
                    
                     $bdd->exec($requete);
 
                     echo "Le match a été modifié avec succès."
+
                    ?> <h2><a href="match.php">Voir la liste des matchs</a></h2>
 
          <?php } else { ?>
+         
                             
+            <div class="form-add-match">
+
                      <form action="modif-match.php" method="post" class="form-match" enctype="multipart/form-data">
 						
                         Date <input type="date" name="datem" /> <br> <br>
                         Heure   <input type="time" name="heure" /> <br> <br>
                         Adversaire <input type="text" name="adversaire" /> <br> <br>
                         Lieu de rencontre  <input type="text" name="lieu" /> <br> <br>
-                        <h4>Contexte</h4>
+                        Contexte
                         <select name="contexte">
 
                             <option value="championnat">Championnat</option>
@@ -55,11 +59,14 @@
                             <option value="coupe-nationale">Coupe Nationale</option>
                             <option value="coupe-regionale">Coupe Régionale</option>
                             
-                        </select> 						
-                        <input class="btn" type="reset" value="Annuler"  />
-                        <input class="btn" type="submit" value="Valider"  />
+                        </select> 	<br> <br>			
+                        <input class="valider" type="submit" value="Valider"  />
+                        <input class="annuler" type="reset" value="Annuler"  />
+                        <input name="modif" type="hidden" value="<?php echo $_POST['modif'];?>">
                         
                     </form>	
+            </div>	
+
             <?php    } ?>
             </div>
 

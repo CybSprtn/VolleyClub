@@ -12,7 +12,7 @@
 		<div class="container">
 			<?php
 
-			if (isset($_POST['nom'])) {
+			if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['num_licence']) && isset($_POST['date_naissance']) && isset($_POST['taille']) && isset($_POST['poids']) && isset($_POST['status']) && isset($_POST['poste_pref']) && isset($_POST['photo'])) {
 
 				$nom=$_POST['nom'];
 				$prenom=$_POST['prenom'];
@@ -107,11 +107,10 @@
 						<option value="avant_droit">Arrière droit</option>
 						<option value="passeur">Passeur</option>
 						<option value="libero"> Libéro</option>
-					</select> <br> <br>
-					
-					<input type="reset" value="Annuler"  />
-					<input type="submit" value="Valider"  />
-					
+					</select> <br> <br>	
+					<input class="valider"type="submit" value="Valider"  />
+					<input class="annuler"type="reset" value="Annuler"  />
+
 					</form>
 				</div>
 

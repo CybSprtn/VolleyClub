@@ -110,10 +110,23 @@ body{
     margin: auto;
     /* border: 1px solid red; */
 }
-.form-add-joueur input{
+
+.form-add-joueur input[type=text]{
     float: right;
-   
 }
+
+.form-add-joueur input[type=file]{
+    float: right;
+}
+
+.form-add-joueur input[type=date]{
+    float: right;
+}
+
+.form-add-joueur select{
+    float: right;
+}
+
 /* -----------Bar horizontal---------------- */
 .header-top nav{
     margin-top:50px;
@@ -212,11 +225,76 @@ body{
     line-height: 55px;
 
 }
-.form-add-match input{
+
+.form-add-match input[type=text]{
   
    float: right;
     
 }
+
+.form-add-match input[type=date]{
+  
+    float: right;
+     
+ }
+
+ .form-add-match input[type=time]{
+  
+    float: right;
+     
+ }
+
+.form-add-match select{
+  
+    float: right;
+     
+ }
+
 .btn{
-    font-size: 20px;   
+    font-size: 20px;
+
+}
+
+.modifier{
+    background-color: orange;
+    width: 80px;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.supprimer{
+    background-color: red;
+    width: 80px;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.ajouter{
+    background-color:greenyellow;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.annuler{
+    background-color:red;
+    float: left;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 7% 0 auto 30%;;
+}
+
+.valider{
+    background-color:greenyellow;
+    float: right;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 7% 30% auto auto;
 }

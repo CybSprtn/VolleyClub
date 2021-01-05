@@ -1,4 +1,4 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Match</title>
@@ -15,17 +15,15 @@
 
 				<?php
 
-				if (isset($_POST['suppr'])) {
+				if (isset($_POST['validation'])) {
 
-                    if ($_POST['suppr'] == "Non") {
+                    if ($_POST['validation'] == "Non") {
 
                         header('Location: match.php');
 
-                        } else {
+                    } else {
 
-                        $id = $_POST[$donnees['id_match']];
-
-                        echo $id;
+                        $id=$_POST['modif'];
 
                         // 	Ouverture d'une connexion à la bdd volleyclub
                         try{
@@ -35,22 +33,24 @@
                         }
                             
 
-                    // $requete = "DELETE FROM matchs WHERE id = '$id'";
+                        $requete = "DELETE FROM matchs WHERE id_match = '$id'";
                     
                         $bdd->exec($requete);
 
                         echo "Le match a été supprimé avec succès."
+
                     ?> <h2><a href="match.php">Voir la liste des matchs</a></h2>
 
            <?php   } ?>
 
          <?php } else { ?>
                             
-                     <form action="suppr-match.php" method="post" class="form-match" enctype="multipart/form-data">
+                     <form action="suppr-match.php" method="post" enctype="multipart/form-data">
 						
                         Etes vous sûr de vouloir supprimer ce match ?						
-                        <input type="submit" value="Non" name="suppr" />
-                        <input type="submit" value="Oui" name="suppr" />
+                        <input type="submit" value="Non" name="validation" />
+                        <input type="submit" value="Oui" name="validation" />
+                        <input name="modif" type="hidden" value="<?php echo $_POST['suppr'];?>">
                         
                     </form>	
             <?php    } ?>
