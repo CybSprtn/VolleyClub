@@ -17,50 +17,60 @@
 
 				if (isset($_POST['datem']) && !empty($_POST['heure']) && ($_POST['adversaire']) && ($_POST['lieu'])) {
 
-                        $datem=$_POST['datem'];
-                        $heure=$_POST['heure'];
-                        $adversaire=$_POST['adversaire'];
-                        $lieu=$_POST['lieu'];
-                        $contexte=$_POST['contexte'];
-                        
+					$datem=$_POST['datem'];
+					$heure=$_POST['heure'];
+					$adversaire=$_POST['adversaire'];
+					$lieu=$_POST['lieu'];
+					
 
-                    // 	Ouverture d'une connexion à la bdd contact
-                    try{
-                        $bdd = new PDO('mysql:host=localhost;dbname=volleyclub;charset=utf8', 'root', '');
-                    } catch (PDOException $e) {
-                        echo 'Connexion échouée :' . $e->getMessage();
-                    }
-                        
-
-                    $requete = "UPDATE matchs SET date = '$datem', heure = '$heure', adversaire = '$adversaire', lieu = '$lieu', contexte = '$contexte'";
-                   
-                    $bdd->exec($requete);
-
-                    echo "Le match a été modifié avec succès."
-                   ?> <h2><a href="match.php">Voir la liste des matchs</a></h2>
-
-         <?php } else { ?>
-                            
-                     <form action="modif-match.php" method="post" class="form-match" enctype="multipart/form-data">
+				}
+				// 	Ouverture d'une connexion à la bdd contact
+				try{
+					$bdd = new PDO('mysql:host=localhost;dbname=volleyclub;charset=utf8', 'root', '');
+				} catch (PDOException $e) {
+                    echo 'Connexion échouée :' . $e->getMessage();
+                }
+					
+				
+					
+				// 	Vérifier si les attributs sont déjà dans la base de données*/
+				 	$existe = 'SELECT * FROM matchs WHERE datem=:datem AND heure=:heure AND adversaire=:adversaire AND lieu=:lieu';
+					
+				 	$count = $bdd->prepare($existe);
+				 	$count->execute(array(':datem' => $datem, ':heure' => $heure, ':adversaire' => $adversaire, ':lieu' => $lieu));
+				
+					
+				
+				 	if ($count->rowCount()!=0) {
 						
-                        Date <input type="date" name="datem" /> <br> <br>
-                        Heure   <input type="time" name="heure" /> <br> <br>
-                        Adversaire <input type="text" name="adversaire" /> <br> <br>
-                        Lieu de rencontre  <input type="text" name="lieu" /> <br> <br>
-                        <h4>Contexte</h4>
-                        <select name="contexte">
-
-                            <option value="championnat">Championnat</option>
-                            <option value="coupe-departementale">Coupe Départementale</option>
-                            <option value="coupe-nationale">Coupe Nationale</option>
-                            <option value="coupe-regionale">Coupe Régionale</option>
-                            
-                        </select> 						
-                        <input class="btn" type="reset" value="Annuler"  />
-                        <input class="btn" type="submit" value="Valider"  />
+				 		echo "Le match existe déjà.";
+						
+				 	} else {
+                
+                //     $requete = "INSERT INTO matchs(id_match, date, heure, adversaire, lieu, est_fini, score_domi, score_ext, domicile, contexte, id_set) VALUES ('$date', '$heure','$nom_adverse','$lieu_rencontre','$domi_ou_ext)";
                         
-                    </form>	
-            <?php    } ?>
+                //     $bdd->exec($requete); 
+                    
+                //     $count->closeCursor(); // Termine le traitement de la requête
+                
+                //     $bdd = null;
+                // }?>
+                <form action="" method="post" class="form-match" enctype="multipart/form-data">
+                
+                    Date : <input type="date" name="date" /> <br> <br>
+                    Heure  : <input type="time" name="heure" /> <br> <br>
+                    Nom de l'équipe adverse : <input type="text" name="nom_adverse" /> <br> <br>
+                    Lieu de rencontre : <input type="text" name="lieu_rencontre" /> <br> <br>
+                    Domicile ou exterieur ?
+                    <select name="domi_ou_ext">
+                        <option value="domicile">Domicile</option>
+                        <option value="exterieur">Extérieur</option>
+                    </select> <br> <br>
+                    
+                    <input type="reset" value="Annuler"  />
+                    <input type="submit" value="Valider"  />
+                    
+                </form>
             </div>
 
     </body>

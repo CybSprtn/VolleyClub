@@ -7,55 +7,37 @@
     </head>
     
     <body>
-        <div class="container">
         <?php 
-				$page='form-suppr-match';
-				require '../header/headerfull.php'; ?>
-			
+        $page='suppr';
+        require '../header/headerfull.php'; ?>
+        <?php
 
-				<?php
+            if (isset($_POST['datem']) && !empty($_POST['heure']) && ($_POST['adversaire']) && ($_POST['lieu'])) {
 
-				if (isset($_POST['suppr'])) {
+                $datem=$_POST['datem'];
+                $heure=$_POST['heure'];
+                $adversaire=$_POST['adversaire'];
+                $lieu=$_POST['lieu'];
+            }
+            // 	Ouverture d'une connexion à la bdd contact
+            try{
+                $bdd = new PDO('mysql:host=localhost;dbname=volleyclub;charset=utf8', 'root', '');
+            } catch (PDOException $e) {
+                echo 'Connexion échouée :' . $e->getMessage();
+            }
+              
+            // 	Vérifier si les attributs sont déjà dans la base de données*/
+                $existe = 'SELECT * FROM matchs WHERE datem=:datem AND heure=:heure AND adversaire=:adversaire AND lieu=:lieu';
+                
+                $count = $bdd->prepare($existe);
+                $count->execute(array(':datem' => $datem, ':heure' => $heure, ':adversaire' => $adversaire, ':lieu' => $lieu));
 
-                    if ($_POST['suppr'] == "Non") {
-
-                        header('Location: match.php');
-
-                        } else {
-
-                        $id = $_POST[$donnees['id_match']];
-
-                        echo $id;
-
-                        // 	Ouverture d'une connexion à la bdd volleyclub
-                        try{
-                            $bdd = new PDO('mysql:host=localhost;dbname=volleyclub;charset=utf8', 'root', '');
-                        } catch (PDOException $e) {
-                            echo 'Connexion échouée :' . $e->getMessage();
-                        }
-                            
-
-                    // $requete = "DELETE FROM matchs WHERE id = '$id'";
+                if ($count->rowCount()!=0) {
                     
-                        $bdd->exec($requete);
-
-                        echo "Le match a été supprimé avec succès."
-                    ?> <h2><a href="match.php">Voir la liste des matchs</a></h2>
-
-           <?php   } ?>
-
-         <?php } else { ?>
-                            
-                     <form action="suppr-match.php" method="post" class="form-match" enctype="multipart/form-data">
-						
-                        Etes vous sûr de vouloir supprimer ce match ?						
-                        <input type="submit" value="Non" name="suppr" />
-                        <input type="submit" value="Oui" name="suppr" />
-                        
-                    </form>	
-            <?php    } ?>
-            </div>
+                    echo "Le match existe déjà.";
+                    
+                } //else { ?>
 
     </body>
 	
-</html>
+    </html>
