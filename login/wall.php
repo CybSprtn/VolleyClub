@@ -15,7 +15,7 @@
                 $error="Identifiants incorrects";
             }
         }
-        require 'functions/auth.php';
+        require '../functions/auth.php';
         if(est_connecte()){
             header('Location: /main.php');
             exit();
