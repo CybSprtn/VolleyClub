@@ -7,66 +7,80 @@
     </head>
     
     <body>
-        <?php
-        $page='match'; 
+		<?php $page='match';
 		$souspage='victoire';
-		require '../header/sidebarmatch.php';
-		require '../header/headerfull.php'; ?>
+		require_once '../header/sidebarmatch.php'; 
+		require_once '../header/headerfull.php';
+		?>
 		<div class="container">
 			<div class="liste-match">
-			<?php
+				
+				<?php
 				// Ouverture d'une connexion à la bdd contact
-				// $bdd = new PDO('mysql:host=localhost;dbname=volleyclub;charset=utf8', 'root', '');
-					// $requete = "SELECT * FROM matchs WHERE est_fini=true";
-					// $listematchs=$bdd->exec($requete);	
-					// $reponse = $bdd->query('SELECT * FROM joueur');
-					// On affiche chaque entrée une à une
-					// while ($donnees = $reponse->fetch()) { ?>
-
+				 $bdd = new PDO('mysql:host=localhost;dbname=volleyclub;charset=utf8', 'root', '');
+						
+					?>
 						<div class="caption">
 							<caption> - Liste des matchs - </caption>
 						</div>
 						<div class="match">
+					
+							<!-- //On affiche chaque entrée une à une -->
 							
 							<table>
 								<tr>
+									<th>id</th>
 									<th>Adversaire</th>
 									<th>Lieu</th>
-									<th>Date & Heure</th>
+									<th>Date</th>
+									<th>Heure</th>
 									<th>Score Karasuno</th>
-									<th>Score extérieur</th>
+									<th>Score Extérieur</th>
 									<th>Contexte</th>
 									
 								</tr>
-						
-								<tr>
-									<td>Nekoma</td>	<!-- $donnees['adversaire'] -->
-									<td>gymnase de Tokyo</td>	<!-- $donnees['lieu'] -->
-									<td>12/01/2019 17:50</td>
-									<td>2</td>		<!-- $donnees['score_domi'] -->
-									<td>1</td>		<!-- $donnees['score_ext'] -->
-									<td>Coupe Régionale</td>
-								</tr>
-							</table>
-							<?php //echo $donnees['adversaire'] . $donnees['lieu'] . $donnees['score_domi'] . $donnees['score_ext'] . $donnees['contexte']?>
-						</div>
-					 
-					<?php //} ?>
-						
-					<?php //$reponse->closeCursor();?> 
-						
-				<?php //} ?>
-					
-				<?php //$count->closeCursor(); ?>
-					
-				<?php// $bdd = null; ?>	
-													
-			</div>
+								<?php 
+									
+									$requete = $bdd->query('SELECT * FROM matchs WHERE score_domi > score_ext ORDER BY (date)');
+			
+									// On affiche chaque entrée une à une
+									while ($donnees = $requete->fetch(PDO::FETCH_ASSOC)) {
 
+										?> <tr>
+										<td class = "win"><?php echo $donnees['id_match']?></td>
+										<td class = "win"><?php echo $donnees['adversaire']?></td>
+										<td class = "win"><?php echo $donnees['lieu']?></td>
+										<td class = "win"><?php echo $donnees['date']?></td>
+										<td class = "win"><?php echo $donnees['heure']?></td>
+										<td class = "win"><?php echo $donnees['score_domi']?></td>
+										<td class = "win"><?php echo $donnees['score_ext']?></td>
+										<td class = "win"><?php echo $donnees['contexte']?></td>
+										<form action="modif-match.php" method="post">
+											<td class = "win"><input class="modifier" type="submit" value="Modifier" /></td>
+											<input name="modif" type="hidden" value="<?php echo $donnees['id_match'];?>" />
+										</form>
+										<form action="suppr-match.php" method="post">
+											<td class = "win"><input class="supprimer" type="submit" value="Supprimer" /></td>
+											<input name="suppr" type="hidden" value="<?php echo $donnees['id_match'];?>" />
+										</form>
+								</tr>
+
+							<?php	} ?>
+
+							</table>
+							
+							<br>
+							<a href="formulairematch.php"> <button class="ajouter" type="button">+ Ajouter un match</button></a>
+
+					<?php	$requete->closeCursor();
+							$bdd = null; ?>
+								
+						</div>
 			
-			
+			</div>
 		
 		</div>	
+
 	</body>
 	
 </html>

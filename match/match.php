@@ -18,8 +18,6 @@
 				<?php
 				// Ouverture d'une connexion à la bdd contact
 				 $bdd = new PDO('mysql:host=localhost;dbname=volleyclub;charset=utf8', 'root', '');
-
-					 
 						
 					?>
 						<div class="caption">
@@ -37,32 +35,33 @@
 									<th>Date</th>
 									<th>Heure</th>
 									<th>Score Karasuno</th>
-									<th>Score extérieur</th>
+									<th>Score Extérieur</th>
 									<th>Contexte</th>
 									
 								</tr>
 								<?php 
 									
 									$requete = $bdd->query('SELECT * FROM matchs ORDER BY (date)');
-			
+									$win = $bdd->query('SELECT * FROM matchs WHERE score_domi > score_ext ORDER BY (date)');
+									$loose = $bdd->query('SELECT * FROM matchs WHERE score_domi < score_ext ORDER BY (date)');
 									// On affiche chaque entrée une à une
 									while ($donnees = $requete->fetch(PDO::FETCH_ASSOC)) {
 
-										?> <tr>
-										<td><?php echo $donnees['id_match']?></td>
-										<td><?php echo $donnees['adversaire']?></td>
-										<td><?php echo $donnees['lieu']?></td>
-										<td><?php echo $donnees['date']?></td>
-										<td><?php echo $donnees['heure']?></td>
-										<td><?php echo $donnees['score_domi']?></td>
-										<td><?php echo $donnees['score_ext']?></td>
-										<td><?php echo $donnees['contexte']?></td>
+									?> <tr>
+										<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><?php echo $donnees['id_match']?></td>
+										<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><?php echo $donnees['adversaire']?></td>
+										<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><?php echo $donnees['lieu']?></td>
+										<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><?php echo $donnees['date']?></td>
+										<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><?php echo $donnees['heure']?></td>
+										<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><?php echo $donnees['score_domi']?></td>
+										<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><?php echo $donnees['score_ext']?></td>
+										<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><?php echo $donnees['contexte']?></td>
 										<form action="modif-match.php" method="post">
-											<td><input class="modifier" type="submit" value="Modifier" /></td>
+											<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><input class="modifier" type="submit" value="Modifier" /></td>
 											<input name="modif" type="hidden" value="<?php echo $donnees['id_match'];?>" />
 										</form>
 										<form action="suppr-match.php" method="post">
-											<td><input class="supprimer" type="submit" value="Supprimer" /></td>
+											<td class="<?php if ($donnees['score_domi'] > $donnees['score_ext']) { echo 'win'; } else {  echo 'loose'; } ?>"><input class="supprimer" type="submit" value="Supprimer" /></td>
 											<input name="suppr" type="hidden" value="<?php echo $donnees['id_match'];?>" />
 										</form>
 								</tr>

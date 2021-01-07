@@ -21,6 +21,8 @@
                         $heure=$_POST['heure'];
                         $adversaire=$_POST['adversaire'];
                         $lieu=$_POST['lieu'];
+                        $score_domi = $_POST['score_domi'];
+                        $score_ext = $_POST['score_ext'];
                         $contexte=$_POST['contexte'];
                         $id=$_POST['modif'];
 
@@ -32,7 +34,7 @@
                     }
                         
 
-                    $requete = "UPDATE matchs SET date = '$datem', heure = '$heure', adversaire = '$adversaire', lieu = '$lieu', contexte = '$contexte' WHERE id_match = '$id'";
+                    $requete = "UPDATE matchs SET date = '$datem', heure = '$heure', adversaire = '$adversaire', lieu = '$lieu', score_domi = '$score_domi', score_ext = '$score_ext', contexte = '$contexte' WHERE id_match = '$id'";
                    
                     $bdd->exec($requete);
 
@@ -51,13 +53,31 @@
                         Heure   <input type="time" name="heure" /> <br> <br>
                         Adversaire <input type="text" name="adversaire" /> <br> <br>
                         Lieu de rencontre  <input type="text" name="lieu" /> <br> <br>
+                        Score Karasuno
+                        <select name="score_domi">
+
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            
+                        </select>  <br> <br>
+                        Score Extérieur
+                        <select name="score_ext">
+
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            
+                        </select>  <br> <br>
                         Contexte
                         <select name="contexte">
 
-                            <option value="championnat">Championnat</option>
-                            <option value="coupe-departementale">Coupe Départementale</option>
-                            <option value="coupe-nationale">Coupe Nationale</option>
-                            <option value="coupe-regionale">Coupe Régionale</option>
+                            <option value="Championnat">Championnat</option>
+                            <option value="Coupe Départementale">Coupe Départementale</option>
+                            <option value="Coupe Nationale">Coupe Nationale</option>
+                            <option value="Coupe Regionale">Coupe Régionale</option>
                             
                         </select> 	<br> <br>			
                         <input class="valider" type="submit" value="Valider"  />

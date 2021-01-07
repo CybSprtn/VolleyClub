@@ -181,18 +181,20 @@ body{
     margin-bottom: 50px;
   
 }
-.match td {
+.match td.win {
+    color: rgb(247, 147, 76);
+    background-color:rgba(1, 116, 48, 0.822)
+ }
+
+ .match td.loose {
     color: rgb(247, 147, 76);
     background-color: rgba(192, 47, 47, 0.753); 
  }
 
- .win{
-    background-color: rgba(112, 194, 58, 0.753); 
 
- }
- .loose{
-    background-color: rgba(192, 47, 47, 0.753); 
-
+.win td {
+    color: rgb(247, 147, 76);
+    background-color:rgba(1, 116, 48, 0.822)
  }
 
 .match th, td{
