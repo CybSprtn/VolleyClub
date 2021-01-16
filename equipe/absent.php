@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Equipe</title>
+        <title>Match</title>
         <meta charset="utf-8">
 		<link rel="stylesheet" href=" ./css/style.css">
     </head>
@@ -9,7 +9,7 @@
     <body>
         <?php 
         $page='equipe';
-        $souspage='tousj';
+        $souspage='absent';
         require_once '../header/sidebarequipe.php';
 		require '../header/headerfull.php'; ?>
 		<div class="container">
@@ -27,6 +27,8 @@
 							<caption> - Liste des joueurs - </caption>
 						</div>
 						<div class="joueur">
+					
+							<!-- //On affiche chaque entrée une à une -->
 							
 							<table>
 								<tr>
@@ -40,10 +42,12 @@
 									<th>Poids</th>
 									<th>Date de naissance</th>
 									
+									
+									
 								</tr>
 								<?php 
 									
-									$requete = $bdd->query('SELECT * FROM joueur ORDER BY nom');
+									$requete = $bdd->query('SELECT * FROM joueur WHERE statut="absent" ORDER BY nom');
 			
 									// On affiche chaque entrée une à une
 									while ($donnees = $requete->fetch(PDO::FETCH_ASSOC)) {
@@ -58,10 +62,6 @@
 										<td><?php echo $donnees['taille']?></td>
 										<td><?php echo $donnees['poids']?></td>
 										<td><?php echo $donnees['date_naissance']?></td>
-										<form action="detail-joueur.php" method="post">
-											<td class="btn-voir"><input class="btn-voir" type="submit" value="Voir" /></td>
-											<input name="voir" type="hidden" value="<?php echo $donnees['num_licence'];?>" />
-										</form>
 										<form action="modif-joueur.php" method="post">
 											<td><input class="modifier" type="submit" value="Modifier" /></td>
 											<input name="modif" type="hidden" value="<?php echo $donnees['num_licence'];?>" />

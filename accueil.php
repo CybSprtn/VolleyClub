@@ -8,7 +8,7 @@
     
     <body>
 		<?php $page='formulairejoueur';
-		require '../header/headerfull.php'; ?>
+		require './header/headerfull.php'; ?>
 		<div class="container">
 			<?php
 

@@ -38,7 +38,8 @@
                     
                     $bdd->exec($requete);
 
-                    echo "Le match a été modifié avec succès."
+                    echo "Le match a été modifié avec succès.";
+
 
                    ?> <h2><a href="match.php">Voir la liste des matchs</a></h2>
 
@@ -48,9 +49,6 @@
 
                     $donnees = $requetejoueur->fetchAll();  
 
-                    // Compter le nb de lignes
-                    //$nb_lignes = substr_count($resultat, "<br/>");
-                    //echo $nb_lignes;
                     ?>
          
                     <div class="form-add-match">
@@ -237,12 +235,7 @@
 
                             </div>
                                 
-                            <?php
-                            $nbjoueurs = 0;
-
-                            ?>
-                            Vous avez sélectionnez joueurs.
-
+                            
                             <input class="valider" type="submit" value="Valider"  />
                             <input class="annuler" type="reset" value="Annuler"  />
                             <input name="modif" type="hidden" value="<?php echo $_POST['modif'];?>">

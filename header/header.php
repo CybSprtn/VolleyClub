@@ -7,7 +7,7 @@
     <header>
 
         <div class="header-top">
-            <img src="/VolleyClub/img/logo.png" alt="">
+            <img src="/VolleyClub/photos-m3104/logo.png" alt="">
         </div>
         <div class="header-sidebar">
             
